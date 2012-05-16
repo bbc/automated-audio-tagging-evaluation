@@ -7,9 +7,43 @@ Content
 -------
 
 * kiwi-evaluation.py : script to run the TopN evaluation described in our paper.
-* data/editorial-tags : ground truth editorial tags on a dataset of 132 items from [BBC Programmes](http://www.bbc.co.uk/programmes).
+* data/editorial-data : ground truth editorial data on a dataset of 132 items from [BBC Programmes](http://www.bbc.co.uk/programmes).
 * data/automated-tags : a set of automated tags derived by the framework described in our paper.
 * data/automated-transcripts : a set of automated transcripts, generated using [CMU Sphinx](http://cmusphinx.sourceforge.net/), a HUB4 acoustic model and a Gigaword-derived language model.
+
+Data format
+-----------
+
+### Editorial data
+
+The data was crawled from [BBC Programmes](http://www.bbc.co.uk/programmes) on the 16th of May, 2012.
+Each file is named according to the following pattern: barcode\_pid.json, where the barcode is used
+as an identifier across our different datasets, and the pid is the identifier of that programme on the
+BBC web site. For example, X0903717\_p002h45s.json can be found [here](http://www.bbc.co.uk/programmes/p002h45s).
+This data holds the editorial tags we are evaluating against.
+
+### Automated tags
+
+Each barcode.json holds the automatically derived tags for the programme identified by the barcode.
+The JSON has the following shape:
+
+> \[ \{ "score": score, "link": DBpedia URI \}, ... \]
+
+This array is ordered by score descending.
+
+### Automated transcripts
+
+Each sub-directory corresponds to a single programme, which barcode is the name of the directory.
+Within each sub-directory, there is one JSON file for a 2 minute chunk of the programme. For
+example transcript-0.json will hold the automated transcript for the first chunk and transcript-1.json
+will hold the automated transcript for the second chunk.
+
+The JSON has the following shape:
+
+> \[ "full transcript", \[ \[ term, start, end, score 1, score 2 \], ... \]
+
+Start and end are in seconds and score 1 and 2 respectively captures the acoustic model score
+and the language model score.
 
 Getting started
 ---------------
