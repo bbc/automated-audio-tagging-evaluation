@@ -53,6 +53,14 @@ our paper.
 
  $ python evaluation.py 
 
+Evaluating your own algorithm
+-----------------------------
+
+1. Fork this repository.
+2. Generate JSON files for your automated tags according to the format described above.
+3. Replace the content of the data/automated-tags directory with your tags.
+4. Run the evaluation script.
+
 Licensing terms and authorship
 ------------------------------
 
