@@ -1,5 +1,5 @@
-Automated DBpedia tagging evaluation resources
-==============================================
+Evaluation of automated DBpedia tagging on speech audio
+=======================================================
 
 A set of resources to perform the evaluation reported in our [Automated interlinking of speech radio archives](http://events.linkeddata.org/ldow2012/papers/ldow2012-paper-11.pdf) paper.
 
