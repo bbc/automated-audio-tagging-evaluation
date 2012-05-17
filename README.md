@@ -66,4 +66,5 @@ Licensing terms and authorship
 
 See 'COPYING' and 'AUTHORS' files.
 The license in 'COPYING' only applies to the Python code and the automated transcripts and tags.
-The editorial data is under the same non-commercial license as the [BBC Programmes](http://www.bbc.co.uk/programmes) data.
+The editorial data is under the same [non-commercial license](http://backstage.bbc.co.uk/archives/2005/01/terms_of_use.html)
+as the [BBC Programmes](http://www.bbc.co.uk/programmes) data.
