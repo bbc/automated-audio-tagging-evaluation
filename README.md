@@ -34,7 +34,7 @@ This array is ordered by score descending.
 ### Automated transcripts
 
 Each sub-directory corresponds to a single programme, which barcode is the name of the directory.
-Within each sub-directory, there is one JSON file for a 2 minute chunk of the programme. For
+Within each sub-directory, there is one JSON file for a 2 minutes chunk of the programme. For
 example transcript-0.json will hold the automated transcript for the first chunk and transcript-1.json
 will hold the automated transcript for the second chunk.
 
@@ -51,7 +51,7 @@ Getting started
 Running the evaluation with results from the automated tagging described in
 our paper.
 
- $ python evaluation.py 
+> $ python evaluation.py 
 
 Evaluating your own algorithm
 -----------------------------
