@@ -16,6 +16,7 @@
 
 import os
 import json
+from pylab import *
 
 def topn(automated_tags, editorial_tags):
     # Values proposed in "A Large-Scale Evaluation of Acoustic and Subjective Music Similarity Measures":
@@ -47,6 +48,27 @@ def topn(automated_tags, editorial_tags):
         total_score += score
     return total_score / len(editorial_tags.keys())
 
+def nmissed(automated_tags, editorial_tags, n_measures = 100):
+    scores = [ tag_data['score'] for barcode in automated_tags.keys() for tag_data in automated_tags[barcode] ] 
+    highest_score = max(scores)
+    lowest_score = min(scores)
+    step = (highest_score - lowest_score) / n_measures
+    current_score = lowest_score
+    x, y = [], []
+    for i in range(0, n_measures):
+        avg_nmissed = 0.0
+        for barcode in editorial_tags.keys():
+            auto_tags = [ tag_data['link'] for tag_data in automated_tags[barcode] if tag_data['score'] >= current_score ] 
+            spotted_tags = [ tag for tag in auto_tags if tag in editorial_tags[barcode] ]
+            nmissed = len(spotted_tags) / float(len(editorial_tags[barcode]))
+            avg_nmissed += nmissed
+        avg_nmissed /= len(editorial_tags.keys())
+        x += [ current_score ]
+        y += [ avg_nmissed ]
+        current_score += step
+    scatter(x, y) 
+    show()
+
 def editorial_tags():
     editorial_tags = {}
     editorial_dir = os.path.join('data', 'editorial-data')
@@ -74,5 +96,7 @@ def run():
     editorial = editorial_tags()
     automated = automated_tags()
     print "Average TopN score: " + str(topn(automated, editorial))
+    print "NMissed score for various score values: "
+    nmissed(automated, editorial)
 
 run()
